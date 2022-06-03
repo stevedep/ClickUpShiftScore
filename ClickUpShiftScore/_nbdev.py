@@ -13,6 +13,6 @@ modules = ["core.py",
 
 doc_url = "https://StevedeP.github.io/ClickUpShiftScore/"
 
-git_url = "https://github.com/StevedeP/ClickUpShiftScore/blob/master/ClickUpShiftScore"
+git_url = "https://github.com/StevedeP/ClickUpShiftScore/blob/master/"
 
 def custom_doc_links(name): return None
