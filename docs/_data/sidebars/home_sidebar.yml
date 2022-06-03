@@ -13,7 +13,7 @@ entries:
       title: Core Module
       url: core.html
     - output: web,pdf
-      title: Title
+      title: Helper functions
       url: helper.html
     output: web
     title: ClickUpShiftScore

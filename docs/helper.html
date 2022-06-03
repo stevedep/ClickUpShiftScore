@@ -1,13 +1,13 @@
 ---
 
-title: Title
+title: Helper functions
 
 
 keywords: fastai
 sidebar: home_sidebar
 
-
-
+summary: "A couple of helper functions are available"
+description: "A couple of helper functions are available"
 nb_path: "01_helper.ipynb"
 ---
 <!--
@@ -29,24 +29,31 @@ nb_path: "01_helper.ipynb"
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Helper-functions">Helper functions<a class="anchor-link" href="#Helper-functions"> </a></h3><blockquote><p>A couple of helper functions are available</p>
-</blockquote>
-
-</div>
-</div>
-</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.parse</span><span class="o">,</span> <span class="nn">urllib.request</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlencode</span><span class="p">,</span> <span class="n">quote_plus</span>
+<span class="kn">import</span> <span class="nn">http.client</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Url-Request">Url Request<a class="anchor-link" href="#Url-Request"> </a></h4><p>Basic function that opens an url</p>
+<h3 id="Url-Request">Url Request<a class="anchor-link" href="#Url-Request"> </a></h3><p>Basic function that opens an url</p>
 
 </div>
 </div>
@@ -78,13 +85,29 @@ nb_path: "01_helper.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">urlrequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">apikey</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">req</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">req</span><span class="o">.</span><span class="n">add_header</span><span class="p">(</span><span class="s2">&quot;Authorization&quot;</span><span class="p">,</span> <span class="n">apikey</span><span class="p">)</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">responsedata</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">responsedata</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Update-Score">Update Score<a class="anchor-link" href="#Update-Score"> </a></h4><p>For the given field (the score field) and task, a value (the score) is posted</p>
+<h3 id="Update-Score">Update Score<a class="anchor-link" href="#Update-Score"> </a></h3><p>For the given field (the score field) and task, a value (the score) is posted</p>
 
 </div>
 </div>
@@ -116,6 +139,31 @@ nb_path: "01_helper.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">updatescore</span><span class="p">(</span><span class="n">fieldid</span><span class="p">,</span> <span class="n">taskid</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">apikey</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s2">&quot;api.clickup.com&quot;</span><span class="p">)</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="se">\r\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">value</span><span class="se">\&quot;</span><span class="s2">: &quot;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">}&quot;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;authorization&#39;</span><span class="p">:</span> <span class="n">apikey</span><span class="p">,</span>
+        <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;cache-control&#39;</span><span class="p">:</span> <span class="s2">&quot;no-cache&quot;</span>
+        <span class="p">}</span>
+
+    <span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/v2/task/&quot;</span> <span class="o">+</span> <span class="n">taskid</span> <span class="o">+</span> <span class="s2">&quot;/field/&quot;</span> <span class="o">+</span> <span class="n">fieldid</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -154,13 +202,40 @@ nb_path: "01_helper.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">shiftstartandduedate</span><span class="p">(</span><span class="n">taskid</span><span class="p">,</span> <span class="n">startvalue</span><span class="p">,</span> <span class="n">duevalue</span><span class="p">,</span> <span class="n">aantaldagen</span><span class="p">,</span> <span class="n">apikey</span><span class="p">):</span>
+    <span class="n">startvalue</span> <span class="o">=</span> <span class="n">startvalue</span> <span class="o">+</span> <span class="p">((</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">)</span> <span class="o">*</span> <span class="n">aantaldagen</span><span class="p">)</span>
+    <span class="n">duevalue</span> <span class="o">=</span> <span class="n">duevalue</span> <span class="o">+</span> <span class="p">((</span><span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">24</span><span class="p">)</span> <span class="o">*</span> <span class="n">aantaldagen</span><span class="p">)</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s2">&quot;api.clickup.com&quot;</span><span class="p">)</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="se">\r\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">start_date</span><span class="se">\&quot;</span><span class="s2">: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">startvalue</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,</span><span class="se">\r\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">due_date</span><span class="se">\&quot;</span><span class="s2">: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">duevalue</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">}&quot;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;authorization&#39;</span><span class="p">:</span> <span class="n">apikey</span><span class="p">,</span>
+        <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;cache-control&#39;</span><span class="p">:</span> <span class="s2">&quot;no-cache&quot;</span>
+        <span class="p">}</span>
+
+    <span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;PUT&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/v2/task/&quot;</span> <span class="o">+</span> <span class="n">taskid</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Update-Priority">Update Priority<a class="anchor-link" href="#Update-Priority"> </a></h4><p>Updates the priority, requires custom field, that have been hardcoded in this code!</p>
+<h3 id="Update-Priority">Update Priority<a class="anchor-link" href="#Update-Priority"> </a></h3><p>Updates the priority, requires custom field, that have been hardcoded in this code!</p>
 
 </div>
 </div>
@@ -192,6 +267,31 @@ nb_path: "01_helper.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">updatepriority</span><span class="p">(</span><span class="n">taskid</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">apikey</span><span class="p">):</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s2">&quot;api.clickup.com&quot;</span><span class="p">)</span>
+
+    <span class="n">payload</span> <span class="o">=</span> <span class="s2">&quot;{</span><span class="se">\r\n</span><span class="s2">  </span><span class="se">\&quot;</span><span class="s2">priority</span><span class="se">\&quot;</span><span class="s2">: &quot;</span> <span class="o">+</span> <span class="n">value</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">}&quot;</span>
+
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;authorization&#39;</span><span class="p">:</span> <span class="n">apikey</span><span class="p">,</span>
+        <span class="s1">&#39;content-type&#39;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s1">&#39;cache-control&#39;</span><span class="p">:</span> <span class="s2">&quot;no-cache&quot;</span>
+        <span class="p">}</span>
+
+    <span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;PUT&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/v2/task/&quot;</span> <span class="o">+</span> <span class="n">taskid</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
