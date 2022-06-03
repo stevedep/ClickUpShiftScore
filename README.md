@@ -2,6 +2,61 @@
 > Package that allows you to shift tasks and to score them. Scoring does require custom fields. Reference to those custom fields have been hard coded. Therefore, scoring will not work out of the box, shifting tasks should work.
 
 
+```mermaid
+graph LR
+A[Hard edge] -->B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```
+
+```python
+from nbdev.export2html import *
+```
+
+```python
+make_readme()
+```
+
+    converting C:\Users\310267217\Python Development\ClickUpShiftScore\index.ipynb to README.md
+    
+
+
+    ---------------------------------------------------------------------------
+
+    UnicodeEncodeError                        Traceback (most recent call last)
+
+    <ipython-input-13-4dadf16a9c47> in <module>
+    ----> 1 make_readme()
+    
+
+    ~\Anaconda3\lib\site-packages\nbdev\export2html.py in make_readme()
+        628     assert index_fn is not None, "Could not locate index notebook"
+        629     print(f"converting {index_fn} to README.md")
+    --> 630     convert_md(index_fn, get_config().config_file.parent, jekyll=False)
+        631     n = get_config().config_file.parent/index_fn.with_suffix('.md').name
+        632     shutil.move(n, get_config().config_file.parent/'README.md')
+    
+
+    ~\Anaconda3\lib\site-packages\nbdev\export2html.py in convert_md(fname, dest_path, img_path, jekyll)
+        558     for ext in ['png', 'svg']:
+        559         md = re.sub(r'!\['+ext+'\]\((.+)\)', '!['+ext+'](' + img_path + '\\1)', md)
+    --> 560     with (Path(dest_path)/dest_name).open('w') as f: f.write(md)
+        561     if hasattr(export[1]['outputs'], 'items'):
+        562         for n,o in export[1]['outputs'].items():
+    
+
+    ~\Anaconda3\lib\encodings\cp1252.py in encode(self, input, final)
+         17 class IncrementalEncoder(codecs.IncrementalEncoder):
+         18     def encode(self, input, final=False):
+    ---> 19         return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+         20 
+         21 class IncrementalDecoder(codecs.IncrementalDecoder):
+    
+
+    UnicodeEncodeError: 'charmap' codec can't encode character '\u200b' in position 375: character maps to <undefined>
+
+
 ## Install
 
 `pip install ClickUpShift`
