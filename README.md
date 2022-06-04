@@ -2,6 +2,14 @@
 
 
 
+Package that allows you to 
+* shift tasks (by a number of days),
+* score tasks (by using 4 custom fields), 
+* based on the score give them a priority. 
+ 
+
+Reference to those custom fields have been hard coded. Therefore, scoring will not work out of the box, shifting tasks should work.
+
 ## Install
 
 `pip install ClickUpShift`
