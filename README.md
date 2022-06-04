@@ -2,13 +2,21 @@
 
 
 
-Package that allows you to 
+ClickUp is a cloud based project management / ToDo environment. (url: https://clickup.com/?noRedirect=true). 
+
+This Python package adds some functionality that is currently not present. 
+
+It allows you to: 
 > * shift tasks (by a number of days),
 > * score tasks (by using 4 custom fields), 
 > * based on the score give them a priority. 
  
 
 Reference to those custom fields have been hard coded. Therefore, scoring will not work out of the box, shifting tasks should work.
+
+When you add the following fields the code could work, although the field references have been hard coded.
+
+![Custom Fields!](..\..\..\..\images\customfields.png "Custom Fields")
 
 ## Install
 
