@@ -24,13 +24,13 @@ test.updatetasks("score", 1)
 
 ```python
 from IPython.display import display, Markdown, Latex
-display(Markdown('*some markdown* $\phi$'))
+display(Markdown('# *some markdown* $\phi$'))
 # If you particularly want to display maths, this is more direct:
 display(Latex('\phi'))
 ```
 
 
-*some markdown* $\phi$
+# *some markdown* $\phi$
 
 
 
