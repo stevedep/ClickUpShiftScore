@@ -12,7 +12,6 @@ Load the module and add your API code when you create an instance of `CU`.
 
 
 ```python
-#reset the console and test import, niet te snel, even wachten...
 from ClickUpShift.core import *
 
 
@@ -23,18 +22,25 @@ test.updatetasks("score", 1)
 ```
 
 ```python
+from pkg_resources import parse_version
+from configparser import ConfigParser
+
+# note: all settings are in settings.ini; edit there, not here
+config = ConfigParser(delimiters=['='])
+config.read('settings.ini')
+cfg = config['DEFAULT']
+
+name = cfg['lib_name']
+user = cfg['user']
+
+
 from IPython.display import display, Markdown, Latex
-display(Markdown('# *some markdown* $\phi$'))
-# If you particularly want to display maths, this is more direct:
-display(Latex('\phi'))
+display(Markdown('Please view *[this documentation](https://github.com/' + user + '/' + name + ')* to see the documentation for all modules and functions. '  ))
+
 ```
 
 
-# *some markdown* $\phi$
-
-
-
-\phi
+Please view *[this documentation](https://github.com/StevedeP/ClickUpShiftScore)* to see the documentation for all modules and functions. 
 
 
 ```mermaid
