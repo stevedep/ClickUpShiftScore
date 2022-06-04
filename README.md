@@ -21,6 +21,10 @@ test = CU("pk_42327425_NPYWMF9GG6AQY7OZF36QRXL8XXXS65J7")
 test.updatetasks("score", 1)
 ```
 
+
+Please view *[this documentation](https://github.com/StevedeP/ClickUpShiftScore)* to see the documentation for all modules and functions. 
+
+
 ```mermaid
 sequenceDiagram
     autonumber
