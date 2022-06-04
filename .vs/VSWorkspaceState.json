@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\docs"
+    "\\ClickUpShiftScore",
+    "\\docs",
+    "\\docs\\_data"
   ],
-  "SelectedNode": "\\Makefile",
+  "SelectedNode": "\\ClickUpShiftScore\\__init__.py",
   "PreviewInSolutionExplorer": false
 }

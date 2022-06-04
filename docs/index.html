@@ -31,67 +31,6 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>mermaid
-graph LR
-A[Hard edge] --&gt;B(Round edge)
-    B --&gt; C{Decision}
-    C --&gt;|One| D[Result one]
-    C --&gt;|Two| E[Result two]</code></pre>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nbdev.export2html</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">make_readme</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>converting C:\Users\310267217\Python Development\ClickUpShiftScore\index.ipynb to README.md
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
 </div>
 </div>
@@ -111,7 +50,7 @@ A[Hard edge] --&gt;B(Round edge)
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Load the module and add your API code.</p>
+<p>Load the module and add your API code when you create an instance of <a href="/ClickUpShiftScore/core.html#CU"><code>CU</code></a>.</p>
 
 </div>
 </div>
@@ -286,11 +225,46 @@ Verjaardag Pepijn
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="/ClickUpShiftScore/core.html#CU"><code>CU</code></a></p>
-<p><a href="/ClickUpShiftScore/core.html"><code>core</code></a></p>
-<p><a href="/ClickUpShiftScore/helper.html"><code>helper</code></a></p>
-<p><code>updatetasks</code></p>
-<p>.....</p>
+
+<pre><code>mermaid
+sequenceDiagram
+    autonumber
+    actor User    
+    participant test as test #58; CU
+    participant updatetasks as updatetasks #58; test
+    participant urlrequest as urlrequest #58; helper 
+    participant updatescore as updatescore #58; helper
+    participant shiftstartandduedate as shiftstartandduedate #58; helper
+    participant updatepriority as updatepriority #58; helper
+    User-&gt;&gt;test:Init (with API key)
+    Note over User, test: User folders stored during init.
+    User-&gt;&gt;updatetasks: updatetasks("score", 1)
+
+    loop folders
+        Note over updatetasks, urlrequest: Loop over folders to get the lists
+        updatetasks-&gt;&gt;urlrequest: urlrequest(folderid)        
+        urlrequest-&gt;&gt;updatetasks: listdata
+
+        loop lists
+        Note over updatetasks, urlrequest: Loop over lists to get the tasks
+        updatetasks-&gt;&gt;urlrequest: urlrequest(listid)
+        urlrequest-&gt;&gt;updatetasks: taskdata
+        Note over updatetasks, updatepriority: for each task in a list one of following options is run [score, shift, priority] 
+        autonumber 7
+        alt is score
+            updatetasks-&gt;&gt;updatescore: updatescore(field, task, score)
+        autonumber 7
+        else is shift
+            updatetasks-&gt;&gt;shiftstartandduedate: shiftstartandduedate(task, startdate, duedate, dagen, apikey)
+        autonumber 7
+        else is priority
+            updatetasks-&gt;&gt;updatepriority: updatepriority(task, score, apikey)
+
+
+        end
+
+        end
+    end</code></pre>
 
 </div>
 </div>
