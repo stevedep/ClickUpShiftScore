@@ -57,6 +57,8 @@ test.updatetasks("score", 1)
     Projecten
     
 
+# Documentation
+
 
 Please view *[this documentation](https://StevedeP.github.io/ClickUpShiftScore)* to see the documentation for all modules and functions. 
 
