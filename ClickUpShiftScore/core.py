@@ -3,7 +3,7 @@
 __all__ = ['CU']
 
 # Cell
-import ClickUpShift.helper as h
+import ClickUpShiftScore.helper as h
 import time
 
 # Cell
