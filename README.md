@@ -22,7 +22,7 @@ test.updatetasks("score", 1)
 ```
 
 
-Please view *[this documentation](https://github.com/StevedeP/ClickUpShiftScore)* to see the documentation for all modules and functions. 
+Please view *[this documentation](https://StevedeP.github.io/ClickUpShiftScore)* to see the documentation for all modules and functions. 
 
 
 ```mermaid
