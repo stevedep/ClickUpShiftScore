@@ -22,6 +22,21 @@ test = CU("pk_42327425_NPYWMF9GG6AQY7OZF36QRXL8XXXS65J7")
 test.updatetasks("score", 1)
 ```
 
+```python
+from IPython.display import display, Markdown, Latex
+display(Markdown('*some markdown* $\phi$'))
+# If you particularly want to display maths, this is more direct:
+display(Latex('\phi'))
+```
+
+
+*some markdown* $\phi$
+
+
+
+\phi
+
+
 ```mermaid
 sequenceDiagram
     autonumber
