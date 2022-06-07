@@ -92,11 +92,89 @@ test.updatetasks("priority", 10)
     pyton code in mapjes
     
 
+```python
+test.updatetasks("shift", 7)
+```
+
+    Achter computer of buro
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Keizer of divino boeken 
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    trouw opzeggen
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Python webscrape magister
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Python Development
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Outlander naar garage voor regulier onderhoud 
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    proces gele doekjes
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Dempers
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    QR codes onderhoud
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    hor evi
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    tennis tournoeien
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    contributie tennis
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Markt in agenda
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    pinpas zakelijk
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Garantie stofzuiger
+    Huis
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Bed pepijn maken
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    koffie kalk
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    Fix hue
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    deurdempers
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    bewarkings cameras
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    grasmaaier huisje
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    onkruid
+    Op pad / Naar Winkel
+    Gezinsplanning
+    Projecten
+    int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+    spotifyapi backup
+    
+
 # Documentation
 
 
 Please view *[this documentation](https://StevedeP.github.io/ClickUpShiftScore)* to see the documentation for all modules and functions. 
 
+
+```mermaid
+flowchart LR
+
+subgraph Init
+    A1[Initit] -->|API key| B1[[self.API key]]
+    A1 --> C1[[self.folderdata]]
+end
+
+subgraph updatetasks
+    A[updatetasks] 
+    C1 --> |Folderdata| A
+    B1 --> |API key| A
+    
+    A --> C{Choice}
+    C -->|score| D[updatescore]
+    C -->|shift| E[shiftstartandduedate]
+    C -->|priority| F[updatepriority]
+    
+end
+
+Init --> updatetasks
+```
 
 ```mermaid
 sequenceDiagram

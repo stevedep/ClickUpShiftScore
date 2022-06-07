@@ -184,6 +184,85 @@ pyton code in mapjes
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">updatetasks</span><span class="p">(</span><span class="s2">&quot;shift&quot;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Achter computer of buro
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Keizer of divino boeken 
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+trouw opzeggen
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Python webscrape magister
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Python Development
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Outlander naar garage voor regulier onderhoud 
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+proces gele doekjes
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Dempers
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+QR codes onderhoud
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+hor evi
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+tennis tournoeien
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+contributie tennis
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Markt in agenda
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+pinpas zakelijk
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Garantie stofzuiger
+Huis
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Bed pepijn maken
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+koffie kalk
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+Fix hue
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+deurdempers
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+bewarkings cameras
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+grasmaaier huisje
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+onkruid
+Op pad / Naar Winkel
+Gezinsplanning
+Projecten
+int() argument must be a string, a bytes-like object or a number, not &#39;NoneType&#39;
+spotifyapi backup
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Documentation">Documentation<a class="anchor-link" href="#Documentation"> </a></h1>
@@ -213,6 +292,34 @@ pyton code in mapjes
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>mermaid
+flowchart LR
+
+subgraph Init
+    A1[Initit] --&gt;|API key| B1[[self.API key]]
+    A1 --&gt; C1[[self.folderdata]]
+end
+
+subgraph updatetasks
+    A[updatetasks] 
+    C1 --&gt; |Folderdata| A
+    B1 --&gt; |API key| A
+
+    A --&gt; C{Choice}
+    C --&gt;|score| D[updatescore]
+    C --&gt;|shift| E[shiftstartandduedate]
+    C --&gt;|priority| F[updatepriority]
+
+end
+
+Init --&gt; updatetasks</code></pre>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 
