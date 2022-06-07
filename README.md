@@ -34,7 +34,7 @@ Load the module and add your API code when you create an instance of `CU`.
 from ClickUpShiftScore.core import *
 
 
-test = CU("pk_42327425_81VOC277FIDWOA3R8AF8SZ0LH354CP2A")
+test = CU("pk_42327425_CWKU0F6UMM3Q62KMJ6UDG0BL1RE20AFA")
 
 
 test.updatetasks("score", 1)
@@ -42,19 +42,54 @@ test.updatetasks("score", 1)
 
     Achter computer of buro
     score updated for: 
-    Python webscrape magister
-    'value'
-    Python Development
-    'value'
-    Feestje pepijn
-    Huis
-    'value'
-    koffie kalk
+    Keizer of divino boeken 
     score updated for: 
-    Fix hue
+    trouw opzeggen
+    Huis
+    score updated for: 
+    koffie kalk
     Op pad / Naar Winkel
     Gezinsplanning
     Projecten
+    
+
+```python
+test.updatetasks("priority", 10)
+```
+
+    Achter computer of buro
+    prio updated for: 
+    Keizer of divino boeken 
+    prio updated for: 
+    trouw opzeggen
+    prio updated for: 
+    Python webscrape magister
+    prio updated for: 
+    Python Development
+    prio updated for: 
+    Outlander naar garage voor regulier onderhoud 
+    prio updated for: 
+    chrores up
+    prio updated for: 
+    proces gele doekjes
+    prio updated for: 
+    Planning Simon in deze tool
+    Huis
+    prio updated for: 
+    koffie kalk
+    prio updated for: 
+    Fix hue
+    prio updated for: 
+    deurdempers
+    prio updated for: 
+    messen wisselen
+    Op pad / Naar Winkel
+    Gezinsplanning
+    prio updated for: 
+    vakantie plannen
+    Projecten
+    prio updated for: 
+    pyton code in mapjes
     
 
 # Documentation
@@ -109,4 +144,3 @@ sequenceDiagram
     end
     end
     ```
-
