@@ -172,16 +172,19 @@ sequenceDiagram
     User-&gt;&gt;updatetasks: updatetasks("score", 1)
 
     loop folders
+    rect rgba(0, 100, 255, .1)
         Note over updatetasks, urlrequest: Loop over folders to get the lists
         updatetasks-&gt;&gt;urlrequest: urlrequest(folderid)        
         urlrequest-&gt;&gt;updatetasks: listdata
 
         loop lists
+        rect rgba(0, 100, 255, .1)
         Note over updatetasks, urlrequest: Loop over lists to get the tasks
         updatetasks-&gt;&gt;urlrequest: urlrequest(listid)
         urlrequest-&gt;&gt;updatetasks: taskdata
         Note over updatetasks, updatepriority: for each task in a list one of following options is run [score, shift, priority] 
         autonumber 7
+        rect rgba(0, 100, 255, .1)
         alt is score
             updatetasks-&gt;&gt;updatescore: updatescore(field, task, score)
         autonumber 7
@@ -195,6 +198,9 @@ sequenceDiagram
         end
 
         end
+    end
+    end
+    end
     end</code></pre>
 
 </div>
