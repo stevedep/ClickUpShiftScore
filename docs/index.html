@@ -217,6 +217,7 @@ pyton code in mapjes
 <div class="text_cell_render border-box-sizing rendered_html">
 
 <pre><code>mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor User    
@@ -231,13 +232,13 @@ sequenceDiagram
     User-&gt;&gt;updatetasks: updatetasks("score", 1)
 
     loop folders
-    rect rgba(0, 100, 255, .1)
+        rect rgba(0, 100, 255, .1)
         Note over updatetasks, urlrequest: Loop over folders to get the lists
         updatetasks-&gt;&gt;urlrequest: urlrequest(folderid)        
         urlrequest-&gt;&gt;updatetasks: listdata
 
         loop lists
-        rect rgba(0, 100, 255, .1)
+            rect rgba(0, 100, 255, .1)
         Note over updatetasks, urlrequest: Loop over lists to get the tasks
         updatetasks-&gt;&gt;urlrequest: urlrequest(listid)
         urlrequest-&gt;&gt;updatetasks: taskdata
@@ -245,6 +246,7 @@ sequenceDiagram
         autonumber 7
         rect rgba(0, 100, 255, .1)
         alt is score
+
             updatetasks-&gt;&gt;updatescore: updatescore(field, task, score)
         autonumber 7
         else is shift
@@ -253,12 +255,11 @@ sequenceDiagram
         else is priority
             updatetasks-&gt;&gt;updatepriority: updatepriority(task, score, apikey)
 
-
+        end    
         end
 
         end
-    end
-    end
+        end
     end
     end</code></pre>
 

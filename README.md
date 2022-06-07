@@ -99,6 +99,7 @@ Please view *[this documentation](https://StevedeP.github.io/ClickUpShiftScore)*
 
 
 ```mermaid
+```mermaid
 sequenceDiagram
     autonumber
     actor User    
@@ -111,15 +112,15 @@ sequenceDiagram
     User->>test:Init (with API key)
     Note over User, test: User folders stored during init.
     User->>updatetasks: updatetasks("score", 1)
-
+    
     loop folders
-    rect rgba(0, 100, 255, .1)
+        rect rgba(0, 100, 255, .1)
         Note over updatetasks, urlrequest: Loop over folders to get the lists
         updatetasks->>urlrequest: urlrequest(folderid)        
         urlrequest->>updatetasks: listdata
-
+        
         loop lists
-        rect rgba(0, 100, 255, .1)
+            rect rgba(0, 100, 255, .1)
         Note over updatetasks, urlrequest: Loop over lists to get the tasks
         updatetasks->>urlrequest: urlrequest(listid)
         urlrequest->>updatetasks: taskdata
@@ -127,6 +128,7 @@ sequenceDiagram
         autonumber 7
         rect rgba(0, 100, 255, .1)
         alt is score
+        
             updatetasks->>updatescore: updatescore(field, task, score)
         autonumber 7
         else is shift
@@ -134,13 +136,13 @@ sequenceDiagram
         autonumber 7
         else is priority
             updatetasks->>updatepriority: updatepriority(task, score, apikey)
-
-
+        
+        end    
         end
-
+        
+        end
         end
     end
     end
-    end
-    end
-    ```
+    
+```
