@@ -99,7 +99,6 @@ Please view *[this documentation](https://StevedeP.github.io/ClickUpShiftScore)*
 
 
 ```mermaid
-```mermaid
 sequenceDiagram
     autonumber
     actor User    
